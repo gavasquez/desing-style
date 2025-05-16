@@ -1,0 +1,26 @@
+/* YoutubeCarousel.css */
+.swiper-pagination-bullet {
+  background-color: #3B82F6 !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin: 0 6px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #2563EB !important;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 24px !important;
+  font-weight: bold;
+}
+
+.swiper-container {
+  padding: 0 40px !important;
+}
+
+/* Aseguramos que la fecha tenga suficiente espacio */
+.swiper-slide {
+  padding-top: 2rem !important;
+}

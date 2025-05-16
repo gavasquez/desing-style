@@ -1,0 +1,137 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  user
+}
+
+model User {
+  id                       String    @id @default(auto()) @map("_id") @db.ObjectId
+  name                     String
+  email                    String    @unique
+  emailVerified            DateTime?
+  password                 String
+  password_change_required Boolean   @default(true)
+  role                     Role      @default(user)
+  image                    String?
+  createdAt                DateTime  @default(now())
+  updatedAt                DateTime  @updatedAt
+  siteId                   String    @unique
+}
+
+model SiteSettings {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  siteName           String?
+  emailSite          String?
+  siteLogoUrl        String?
+  description        String?
+  googleTagManagerId String?
+  facebookUrl        String?
+  twitterUrl         String?
+  instagramUrl       String?
+  linkedinUrl        String?
+  youtubeUrl         String?
+  tiktokUrl          String?
+  siteColor          String?
+  siteColorText      String?
+  policyPrivacyText  String?
+  font_family        String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  siteId             String   @unique
+}
+
+model Hero {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  content    String
+  imageUrl   String?
+  heroUrl    String?
+  textButton String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  siteId     String   @unique
+}
+
+model AboutUs {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  siteId      String   @unique
+}
+
+model ServiceModule {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  generalTitle       String // Título general del módulo
+  generalDescription String // Descripción general del módulo
+  generalImageUrl    String? // URL de la imagen general
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  siteId             String   @unique
+}
+
+model Service {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  description     String
+  mediaUrls       String[] @default([]) // Cambiado a un array de strings
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  siteId          String
+  serviceModuleId String
+}
+
+model Parallax {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String
+  imageUrl    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  siteId      String   @unique
+}
+
+model RegistrationForm {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullName    String
+  email       String   @unique
+  phoneNumber String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  siteId      String // ID del sitio
+}
+
+model Footer {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  address     String
+  phoneNumber String
+  map_iframe  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  siteId      String   @unique
+}
+
+model YoutubeShorts {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  shortsUrl   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  siteId      String   @unique
+}
