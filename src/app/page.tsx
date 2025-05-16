@@ -28,7 +28,7 @@ export default async function Page() {
         <div className="absolute inset-0 bg-black/80"></div>
         <div className="container relative">
           <div className="grid grid-cols-1 text-center">
-            <Image src={ siteSettings?.siteLogoUrl ? siteSettings?.siteLogoUrl : '/uploads/favicon.ico' } width={ 250 } height={ 150 } className="mx-auto mt-8 sm:w-72 sm:h-72 md:w-96 md:h-96" alt={ siteSettings?.siteName ?? 'Logo del Sitio' } />
+            <Image src={ siteSettings?.siteLogoUrl ? siteSettings?.siteLogoUrl : '/uploads/favicon.ico' } width={ 250 } height={ 150 } className="mx-auto mt-8 sm:w-72 sm:h-72 md:w-[600px] md:h-96" alt={ siteSettings?.siteName ?? 'Logo del Sitio' } />
             <h4 className="text-white lg:text-5xl text-4xl lg:leading-normal leading-normal font-medium my-6 position-relative">{ hero?.title ? hero?.title : 'Titulo del Hero / Banner' }</h4>
 
             <div className="opacity-50 mb-0 max-w-xl text-lg mx-auto">

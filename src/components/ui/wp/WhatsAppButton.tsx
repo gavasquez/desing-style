@@ -7,7 +7,7 @@ interface Props {
 
 export const WhatsAppButton = ( { phoneNumber, message }: Props ) => {
 
-  const whatsappLink = `https://wa.me/52${ phoneNumber }?text=${ encodeURIComponent( message ) }`;
+  const whatsappLink = `https://wa.me/57${ phoneNumber }?text=${ encodeURIComponent( message ) }`;
 
   if ( !phoneNumber ) {
     return null;
